@@ -9,7 +9,7 @@ import tensorflow as tf
 def get_training_steps():
     """Returns the number of batches that will be used to train the CNN.
     It is recommended to change this value."""
-    return 500
+    return 50
 
 
 def get_batch_size():
@@ -45,15 +45,15 @@ def cnn(features, labels, mode):
     
     w2 = ((w1-fw1+2*P )/S)+1
     h2 = ((h1-fh1+2*P )/S)+1
-    w2 /=2
-    h2 /=2
+#    w2 /=2
+#    h2 /=2
     fh2 = 8
     fw2 = 8
     # Pooling Layer #1
     # First max pooling layer with a 2x2 filter and stride of 2
     # Input Tensor Shape: [batch_size, 28, 28, 32]
     # Output Tensor Shape: [batch_size, 14, 14, 32]
-    pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[2, 2], strides=2)
+#    pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[2, 2], strides=2)
 
     # Convolutional Layer #2
     # Computes 64 features using a 5x5 filter.
@@ -61,7 +61,7 @@ def cnn(features, labels, mode):
     # Input Tensor Shape: [batch_size, 32, 32, 32]
     # Output Tensor Shape: [batch_size, 32, 32, 64]
     conv2 = tf.layers.conv2d(
-      inputs=pool1,
+      inputs=conv1,
       filters=32,
       kernel_size=[fh2, fw2],
       padding="valid",
@@ -71,11 +71,11 @@ def cnn(features, labels, mode):
     # Second max pooling layer with a 2x2 filter and stride of 2
     # Input Tensor Shape: [batch_size, 32, 32, 64]
     # Output Tensor Shape: [batch_size, 16, 16, 64]
-    pool2 = tf.layers.max_pooling2d(inputs=conv2, pool_size=[2, 2], strides=2)
+#    pool2 = tf.layers.max_pooling2d(inputs=conv2, pool_size=[2, 2], strides=2)
     w3 = ((w2-fw2+2*P )/S)+1
     h3 = ((h2-fh2+2*P )/S)+1
-    w3 /= 2
-    h3 /= 2
+#    w3 /= 2
+#    h3 /= 2
     fh3 = 5
     fw3 = 5
     conv3 = tf.layers.conv2d(
