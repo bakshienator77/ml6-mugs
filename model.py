@@ -9,7 +9,7 @@ import tensorflow as tf
 def get_training_steps():
     """Returns the number of batches that will be used to train the CNN.
     It is recommended to change this value."""
-    return 50
+    return 500
 
 
 def get_batch_size():
