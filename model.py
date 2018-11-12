@@ -45,6 +45,9 @@ def cnn(features, labels, mode):
     
     w2 = ((w1-fw1+2*P )/S)+1
     h2 = ((h1-fh1+2*P )/S)+1
+    w2 = int(w2)
+    h2 = int(h2)
+    print(w2, h2)
 #    w2 /=2
 #    h2 /=2
     fh2 = 8
@@ -74,6 +77,9 @@ def cnn(features, labels, mode):
 #    pool2 = tf.layers.max_pooling2d(inputs=conv2, pool_size=[2, 2], strides=2)
     w3 = ((w2-fw2+2*P )/S)+1
     h3 = ((h2-fh2+2*P )/S)+1
+    w3 = int(w3)
+    h3 = int(h3)
+    print(w3, h3)
 #    w3 /= 2
 #    h3 /= 2
     fh3 = 5
@@ -90,6 +96,9 @@ def cnn(features, labels, mode):
     # Output Tensor Shape: [batch_size, 16 * 16 * 64]
     w4 = ((w3-fw3+2*P )/S)+1
     h4 = ((h3-fh3+2*P )/S)+1
+    w4 = int(w4)
+    h4 = int(h4)
+    print(w4, h4)
 
 
     pool2_flat = tf.reshape(conv3, [-1, w4 * h4 * 32])
